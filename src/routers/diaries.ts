@@ -26,7 +26,7 @@ router.post('/', (req, res) => {
 
     res.json(addDiaryEntry)
   } catch (e) {
-    res.status(404).send(e)
+    res.status(400).send(e)
   }
 })
 

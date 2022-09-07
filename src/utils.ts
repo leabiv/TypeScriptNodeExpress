@@ -1,10 +1,10 @@
 /** import */
 import { NewDiaryEntry } from './types'
-import { Weather, Visibility } from './enums'
+import { Visibility } from './enums'
 
 /** function de validaciones de los parametros del object */
 const parseComment = (commentFromRequest: any): string => {
-  console.log(commentFromRequest)
+  // console.log(commentFromRequest)
   if (!isString(commentFromRequest)) {
     throw new Error('Incorrect or missiong comment')
   }
@@ -12,23 +12,23 @@ const parseComment = (commentFromRequest: any): string => {
 }
 
 const parseDate = (dateFromRequest: any): string => {
-  console.log(dateFromRequest)
+  // console.log(dateFromRequest)
   if (!isString(dateFromRequest) || !isDate(dateFromRequest)) {
     throw new Error('Incorrect or missiong date')
   }
   return dateFromRequest
 }
-
+/*
 const parseWeather = (weatherFromRequest: any): Weather => {
-  console.log(weatherFromRequest)
+  // console.log(weatherFromRequest)
   if (!isString(weatherFromRequest) || !isWeather(weatherFromRequest)) {
     throw new Error('Incorrect or missiong Weather')
   }
   return weatherFromRequest
 }
-
+*/
 const parseVisibility = (visibilityFromRequest: any): Visibility => {
-  console.log(visibilityFromRequest)
+  // console.log(visibilityFromRequest)
   if (!isString(visibilityFromRequest) || !isVisibility(visibilityFromRequest)) {
     throw new Error('Incorrect or missiong Visibility')
   }
@@ -43,22 +43,22 @@ const isString = (string: string): boolean => {
 const isDate = (date: string): boolean => {
   return Boolean(Date.parse(date))
 }
-
+/*
 const isWeather = (parm: any): boolean => {
   return Object.values(Weather).includes(parm)
 }
-
+*/
 const isVisibility = (parm: any): boolean => {
   return Object.values(Visibility).includes(parm)
 }
 
 /** function -> parametro object y retorna un object */
+
 const toNewDiaryEntry = (object: any): NewDiaryEntry => {
-  console.log(object.visibility)
   const newEntry: NewDiaryEntry = {
     comment: parseComment(object.comment),
     date: parseDate(object.date),
-    weather: parseWeather(object.weather),
+    weather: (object.weather),
     visibility: parseVisibility(object.visibility)
   }
 
