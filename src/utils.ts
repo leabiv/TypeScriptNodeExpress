@@ -1,6 +1,6 @@
 /** import */
 import { NewDiaryEntry } from './types'
-import { Visibility } from './enums'
+import { Visibility, Weather } from './enums'
 
 /** function de validaciones de los parametros del object */
 const parseComment = (commentFromRequest: any): string => {
@@ -18,7 +18,7 @@ const parseDate = (dateFromRequest: any): string => {
   }
   return dateFromRequest
 }
-/*
+
 const parseWeather = (weatherFromRequest: any): Weather => {
   // console.log(weatherFromRequest)
   if (!isString(weatherFromRequest) || !isWeather(weatherFromRequest)) {
@@ -26,7 +26,7 @@ const parseWeather = (weatherFromRequest: any): Weather => {
   }
   return weatherFromRequest
 }
-*/
+
 const parseVisibility = (visibilityFromRequest: any): Visibility => {
   // console.log(visibilityFromRequest)
   if (!isString(visibilityFromRequest) || !isVisibility(visibilityFromRequest)) {
@@ -43,11 +43,11 @@ const isString = (string: string): boolean => {
 const isDate = (date: string): boolean => {
   return Boolean(Date.parse(date))
 }
-/*
+
 const isWeather = (parm: any): boolean => {
   return Object.values(Weather).includes(parm)
 }
-*/
+
 const isVisibility = (parm: any): boolean => {
   return Object.values(Visibility).includes(parm)
 }
@@ -58,7 +58,7 @@ const toNewDiaryEntry = (object: any): NewDiaryEntry => {
   const newEntry: NewDiaryEntry = {
     comment: parseComment(object.comment),
     date: parseDate(object.date),
-    weather: (object.weather),
+    weather: parseWeather(object.weather),
     visibility: parseVisibility(object.visibility)
   }
 

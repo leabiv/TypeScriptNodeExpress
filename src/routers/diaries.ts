@@ -25,8 +25,8 @@ router.post('/', (req, res) => {
     // console.log('addDiaryEntry', addDiaryEntry)
 
     res.json(addDiaryEntry)
-  } catch (e) {
-    res.status(400).send(e)
+  } catch (e: any) {
+    res.status(400).send(e.message)
   }
 })
 
